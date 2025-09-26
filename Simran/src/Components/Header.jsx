@@ -3,7 +3,7 @@ import styles from './Header.module.css';
 
 const Header = ({
     title = "DoubleTick",
-    logoSrc = "/media/Doubletick Logo.png",
+    logoSrc = "/media/logo.jpeg",
     logoAlt = "DoubleTick Logo",
     onMenuClick,
     showMenu = true,
