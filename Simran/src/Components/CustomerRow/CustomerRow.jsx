@@ -12,7 +12,9 @@ const CustomerRow = ({ customer, isSelected, onSelect }) => {
                 />
             </div>
             <div className={styles.customerCell}>
-                <div className={styles.avatar}>{customer.avatar}</div>
+                <div className={styles.avatar}>
+                    <img src={customer.avatar} alt={`${customer.name} avatar`} className={styles.avatarImage} />
+                </div>
                 <div className={styles.customerInfo}>
                     <div className={styles.name}>{customer.name}</div>
                     <div className={styles.id}>#{customer.id.toString().padStart(10, '0')}</div>

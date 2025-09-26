@@ -25,15 +25,16 @@ const Header = ({
                 />
                 {title}
             </h1>
-            {showMenu && (
-                <button
-                    className={styles.menuButton}
-                    onClick={handleMenuClick}
-                    aria-label="Open menu"
-                >
-                    ⋯
-                </button>
-            )}
+            
+            {/* {showMenu && (
+                // <button
+                //     className={styles.menuButton}
+                //     onClick={handleMenuClick}
+                //     aria-label="Open menu"
+                // >
+                //     ⋯
+                // </button>
+            )} */}
         </div>
     );
 };

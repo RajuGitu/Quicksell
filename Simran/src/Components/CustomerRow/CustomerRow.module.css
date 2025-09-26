@@ -34,7 +34,8 @@
     display: flex;
     align-items: center;
     gap: 12px;
-    min-width: 0; /* Allows flex children to shrink */
+    min-width: 0;
+    /* Allows flex children to shrink */
 }
 
 .avatar {
@@ -50,8 +51,19 @@
     flex-shrink: 0;
 }
 
+.avatarImage {
+    width: 40px;
+    /* adjust size */
+    height: 40px;
+    border-radius: 50%;
+    /* makes it circular */
+    object-fit: cover;
+    /* maintains aspect ratio */
+}
+
 .customerInfo {
-    min-width: 0; /* Allows text to truncate if needed */
+    min-width: 0;
+    /* Allows text to truncate if needed */
 }
 
 .name {
@@ -104,7 +116,7 @@
         grid-template-columns: 40px 1fr 1fr;
         gap: 8px;
     }
-    
+
     .messageCell,
     .addedByCell {
         display: none;

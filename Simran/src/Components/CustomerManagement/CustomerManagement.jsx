@@ -2,6 +2,7 @@ import React, { useState, useEffect, useMemo, useCallback } from 'react';
 import customerData from '../../Data/Customer';
 import CustomerRow from '../CustomerRow/CustomerRow';
 import Header from '../Header';
+import CustomerControls from '../CustomerControls ';
 import styles from './CustomerManagement.module.css';
 
 const CustomerManagement = () => {
@@ -90,6 +91,15 @@ const CustomerManagement = () => {
         // For example: open a sidebar, show dropdown menu, etc.
     }, []);
 
+    // Handlers for CustomerControls component
+    const handleSearchChange = useCallback((value) => {
+        setSearchTerm(value);
+    }, []);
+
+    const handleFiltersToggle = useCallback(() => {
+        setShowFilters(!showFilters);
+    }, [showFilters]);
+
     // Reset to first page when search or sort changes
     useEffect(() => {
         setCurrentPage(1);
@@ -105,55 +115,15 @@ const CustomerManagement = () => {
             {/* Header Component */}
             <Header onMenuClick={handleMenuClick} />
 
-            {/* All Customers Section */}
-            <div className={styles.allCustomersSection}>
-                <div className={styles.allCustomersLabel}>
-                    <span className={styles.allCustomersText}>All Customers</span>
-                    <span className={styles.customerCount}>{filteredAndSortedCustomers.length}</span>
-                </div>
-            </div>
-
-            {/* Search and Filter Controls */}
-            <div className={styles.controls}>
-                <div className={styles.searchBox}>
-                    <div className={styles.searchInputContainer}>
-                        <img
-                            src="/media/test_Search-3.svg"
-                            alt="Search"
-                            className={styles.searchIcon}
-                        />
-                        <input
-                            type="text"
-                            placeholder="Search Customers"
-                            value={searchTerm}
-                            onChange={(e) => setSearchTerm(e.target.value)}
-                            className={styles.searchInput}
-                        />
-                    </div>
-                </div>
-                <div className={styles.filtersContainer}>
-                    <button
-                        className={styles.filtersButton}
-                        onClick={() => setShowFilters(!showFilters)}
-                    >
-                        <img
-                            src="/media/test_Filter.svg"
-                            alt="Filter"
-                            style={{ width: '16px', height: '16px' }}
-                        />
-                        Add Filters ▼
-                    </button>
-                    {showFilters && (
-                        <div className={styles.filtersDropdown}>
-                            <div className={styles.filterItem}>Filter 1</div>
-                            <div className={styles.filterItem}>Filter 2</div>
-                            <div className={styles.filterItem}>Filter 3</div>
-                            <div className={styles.filterItem}>Filter 4</div>
-                        </div>
-                    )}
-                </div>
-            </div>
-
+            {/* Customer Controls Component - includes All Customers Section and Search/Filter Controls */}
+            <CustomerControls
+                filteredCustomersCount={filteredAndSortedCustomers.length}
+                searchTerm={searchTerm}
+                onSearchChange={handleSearchChange}
+                showFilters={showFilters}
+                onFiltersToggle={handleFiltersToggle}
+            />
+                    
             {/* Customer Table */}
             <div className={styles.tableContainer}>
                 {/* Table Header */}

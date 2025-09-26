@@ -1,304 +1,54 @@
 const customerData = [
-    {
-        id: 1, name: "John Smith", email: "john.smith@email.com", phone: "+1-555-0101", addedBy: "Admin", lastMessage: "2024-07-15 14:30", avatar: "JS"
-    },
-    {
-        id: 2, name: "Sarah Johnson", email: "sarah.j@email.com", phone: "+1-555-0102", addedBy: "Manager", lastMessage: "2024-07-15 13:45", avatar: "SJ"
-    },
-    {
-        id: 3, name: "Mike Wilson", email: "mike.wilson@email.com", phone: "+1-555-0103", addedBy: "Admin", lastMessage: "2024-07-15 12:20", avatar: "MW"
-    },
-    {
-        id: 4, name: "Emily Davis", email: "emily.davis@email.com", phone: "+1-555-0104", addedBy: "Support", lastMessage: "2024-07-15 11:15", avatar: "ED"
-    },
-    {
-        id: 5, name: "David Brown", email: "david.brown@email.com", phone: "+1-555-0105", addedBy: "Admin", lastMessage: "2024-07-15 10:30", avatar: "DB"
-    },
-    {
-        id: 6, name: "Lisa Anderson", email: "lisa.a@email.com", phone: "+1-555-0106", addedBy: "Manager", lastMessage: "2024-07-15 09:45", avatar: "LA"
-    },
-    {
-        id: 7, name: "Robert Taylor", email: "robert.taylor@email.com", phone: "+1-555-0107", addedBy: "Support", lastMessage: "2024-07-15 09:00", avatar: "RT"
-    },
-    {
-        id: 8, name: "Jennifer White", email: "jennifer.w@email.com", phone: "+1-555-0108", addedBy: "Admin", lastMessage: "2024-07-15 08:30", avatar: "JW"
-    },
-    {
-        id: 9, name: "Christopher Lee", email: "chris.lee@email.com", phone: "+1-555-0109", addedBy: "Manager", lastMessage: "2024-07-15 08:00", avatar: "CL"
-    },
-    {
-        id: 10, name: "Amanda Garcia", email: "amanda.garcia@email.com", phone: "+1-555-0110", addedBy: "Support", lastMessage: "2024-07-15 07:45", avatar: "AG"
-    },
-    {
-        id: 11, name: "James Martinez", email: "james.martinez@email.com", phone: "+1-555-0111", addedBy: "Admin", lastMessage: "2024-07-14 16:20", avatar: "JM"
-    },
-    {
-        id: 12, name: "Mary Rodriguez", email: "mary.rodriguez@email.com", phone: "+1-555-0112", addedBy: "Manager", lastMessage: "2024-07-14 15:30", avatar: "MR"
-    },
-    {
-        id: 13, name: "Daniel Thompson", email: "daniel.t@email.com", phone: "+1-555-0113", addedBy: "Support", lastMessage: "2024-07-14 14:45", avatar: "DT"
-    },
-    {
-        id: 14, name: "Patricia Moore", email: "patricia.moore@email.com", phone: "+1-555-0114", addedBy: "Admin", lastMessage: "2024-07-14 13:15", avatar: "PM"
-    },
-    {
-        id: 15, name: "Mark Jackson", email: "mark.jackson@email.com", phone: "+1-555-0115", addedBy: "Manager", lastMessage: "2024-07-14 12:30", avatar: "MJ"
-    },
-    {
-        id: 16, name: "Linda Clark", email: "linda.clark@email.com", phone: "+1-555-0116", addedBy: "Support", lastMessage: "2024-07-14 11:20", avatar: "LC"
-    },
-    {
-        id: 17, name: "Paul Lewis", email: "paul.lewis@email.com", phone: "+1-555-0117", addedBy: "Admin", lastMessage: "2024-07-14 10:45", avatar: "PL"
-    },
-    {
-        id: 18, name: "Nancy Walker", email: "nancy.walker@email.com", phone: "+1-555-0118", addedBy: "Manager", lastMessage: "2024-07-14 10:00", avatar: "NW"
-    },
-    {
-        id: 19, name: "Steven Hall", email: "steven.hall@email.com", phone: "+1-555-0119", addedBy: "Support", lastMessage: "2024-07-14 09:30", avatar: "SH"
-    },
-    {
-        id: 20, name: "Karen Allen", email: "karen.allen@email.com", phone: "+1-555-0120", addedBy: "Admin", lastMessage: "2024-07-14 09:00", avatar: "KA"
-    },
-    {
-        id: 21, name: "Kevin Young", email: "kevin.young@email.com", phone: "+1-555-0121", addedBy: "Manager", lastMessage: "2024-07-14 08:15", avatar: "KY"
-    },
-    {
-        id: 22, name: "Betty King", email: "betty.king@email.com", phone: "+1-555-0122", addedBy: "Support", lastMessage: "2024-07-14 07:45", avatar: "BK"
-    },
-    {
-        id: 23, name: "Gary Wright", email: "gary.wright@email.com", phone: "+1-555-0123", addedBy: "Admin", lastMessage: "2024-07-13 16:30", avatar: "GW"
-    },
-    {
-        id: 24, name: "Helen Lopez", email: "helen.lopez@email.com", phone: "+1-555-0124", addedBy: "Manager", lastMessage: "2024-07-13 15:45", avatar: "HL"
-    },
-    {
-        id: 25, name: "Anthony Hill", email: "anthony.hill@email.com", phone: "+1-555-0125", addedBy: "Support", lastMessage: "2024-07-13 14:20", avatar: "AH"
-    },
-    {
-        id: 26, name: "Sandra Green", email: "sandra.green@email.com", phone: "+1-555-0126", addedBy: "Admin", lastMessage: "2024-07-13 13:30", avatar: "SG"
-    },
-    {
-        id: 27, name: "Ronald Adams", email: "ronald.adams@email.com", phone: "+1-555-0127", addedBy: "Manager", lastMessage: "2024-07-13 12:15", avatar: "RA"
-    },
-    {
-        id: 28, name: "Donna Baker", email: "donna.baker@email.com", phone: "+1-555-0128", addedBy: "Support", lastMessage: "2024-07-13 11:45", avatar: "DB"
-    },
-    {
-        id: 29, name: "Ryan Nelson", email: "ryan.nelson@email.com", phone: "+1-555-0129", addedBy: "Admin", lastMessage: "2024-07-13 10:30", avatar: "RN"
-    },
-    {
-        id: 30, name: "Carol Carter", email: "carol.carter@email.com", phone: "+1-555-0130", addedBy: "Manager", lastMessage: "2024-07-13 09:45", avatar: "CC"
-    },
-    {
-        id: 31, name: "Timothy Mitchell", email: "timothy.mitchell@email.com", phone: "+1-555-0131", addedBy: "Support", lastMessage: "2024-07-13 09:00", avatar: "TM"
-    },
-    {
-        id: 32, name: "Sharon Perez", email: "sharon.perez@email.com", phone: "+1-555-0132", addedBy: "Admin", lastMessage: "2024-07-13 08:30", avatar: "SP"
-    },
-    {
-        id: 33, name: "Jason Roberts", email: "jason.roberts@email.com", phone: "+1-555-0133", addedBy: "Manager", lastMessage: "2024-07-12 16:15", avatar: "JR"
-    },
-    {
-        id: 34, name: "Michelle Turner", email: "michelle.turner@email.com", phone: "+1-555-0134", addedBy: "Support", lastMessage: "2024-07-12 15:30", avatar: "MT"
-    },
-    {
-        id: 35, name: "Kenneth Phillips", email: "kenneth.phillips@email.com", phone: "+1-555-0135", addedBy: "Admin", lastMessage: "2024-07-12 14:45", avatar: "KP"
-    },
-    {
-        id: 36, name: "Kimberly Campbell", email: "kimberly.campbell@email.com", phone: "+1-555-0136", addedBy: "Manager", lastMessage: "2024-07-12 13:20", avatar: "KC"
-    },
-    {
-        id: 37, name: "Joshua Parker", email: "joshua.parker@email.com", phone: "+1-555-0137", addedBy: "Support", lastMessage: "2024-07-12 12:30", avatar: "JP"
-    },
-    {
-        id: 38, name: "Deborah Evans", email: "deborah.evans@email.com", phone: "+1-555-0138", addedBy: "Admin", lastMessage: "2024-07-12 11:45", avatar: "DE"
-    },
-    {
-        id: 39, name: "Brian Edwards", email: "brian.edwards@email.com", phone: "+1-555-0139", addedBy: "Manager", lastMessage: "2024-07-12 10:15", avatar: "BE"
-    },
-    {
-        id: 40, name: "Amy Collins", email: "amy.collins@email.com", phone: "+1-555-0140", addedBy: "Support", lastMessage: "2024-07-12 09:30", avatar: "AC"
-    },
-    {
-        id: 41, name: "Edward Stewart", email: "edward.stewart@email.com", phone: "+1-555-0141", addedBy: "Admin", lastMessage: "2024-07-12 08:45", avatar: "ES"
-    },
-    {
-        id: 42, name: "Brenda Sanchez", email: "brenda.sanchez@email.com", phone: "+1-555-0142", addedBy: "Manager", lastMessage: "2024-07-11 16:20", avatar: "BS"
-    },
-    {
-        id: 43, name: "Wayne Morris", email: "wayne.morris@email.com", phone: "+1-555-0143", addedBy: "Support", lastMessage: "2024-07-11 15:15", avatar: "WM"
-    },
-    {
-        id: 44, name: "Angela Rogers", email: "angela.rogers@email.com", phone: "+1-555-0144", addedBy: "Admin", lastMessage: "2024-07-11 14:30", avatar: "AR"
-    },
-    {
-        id: 45, name: "Ralph Reed", email: "ralph.reed@email.com", phone: "+1-555-0145", addedBy: "Manager", lastMessage: "2024-07-11 13:45", avatar: "RR"
-    },
-    {
-        id: 46, name: "Janet Cook", email: "janet.cook@email.com", phone: "+1-555-0146", addedBy: "Support", lastMessage: "2024-07-11 12:20", avatar: "JC"
-    },
-    {
-        id: 47, name: "Arthur Morgan", email: "arthur.morgan@email.com", phone: "+1-555-0147", addedBy: "Admin", lastMessage: "2024-07-11 11:30", avatar: "AM"
-    },
-    {
-        id: 48, name: "Frances Bell", email: "frances.bell@email.com", phone: "+1-555-0148", addedBy: "Manager", lastMessage: "2024-07-11 10:45", avatar: "FB"
-    },
-    {
-        id: 49, name: "Harold Murphy", email: "harold.murphy@email.com", phone: "+1-555-0149", addedBy: "Support", lastMessage: "2024-07-11 10:00", avatar: "HM"
-    },
-    {
-        id: 50, name: "Marie Bailey", email: "marie.bailey@email.com", phone: "+1-555-0150", addedBy: "Admin", lastMessage: "2024-07-11 09:15", avatar: "MB"
-    },
-    {
-        id: 1, name: "John Smith", email: "john.smith@email.com", phone: "+1-555-0101", addedBy: "Admin", lastMessage: "2024-07-15 14:30", avatar: "JS"
-    },
-    {
-        id: 2, name: "Sarah Johnson", email: "sarah.j@email.com", phone: "+1-555-0102", addedBy: "Manager", lastMessage: "2024-07-15 13:45", avatar: "SJ"
-    },
-    {
-        id: 3, name: "Mike Wilson", email: "mike.wilson@email.com", phone: "+1-555-0103", addedBy: "Admin", lastMessage: "2024-07-15 12:20", avatar: "MW"
-    },
-    {
-        id: 4, name: "Emily Davis", email: "emily.davis@email.com", phone: "+1-555-0104", addedBy: "Support", lastMessage: "2024-07-15 11:15", avatar: "ED"
-    },
-    {
-        id: 5, name: "David Brown", email: "david.brown@email.com", phone: "+1-555-0105", addedBy: "Admin", lastMessage: "2024-07-15 10:30", avatar: "DB"
-    },
-    {
-        id: 6, name: "Lisa Anderson", email: "lisa.a@email.com", phone: "+1-555-0106", addedBy: "Manager", lastMessage: "2024-07-15 09:45", avatar: "LA"
-    },
-    {
-        id: 7, name: "Robert Taylor", email: "robert.taylor@email.com", phone: "+1-555-0107", addedBy: "Support", lastMessage: "2024-07-15 09:00", avatar: "RT"
-    },
-    {
-        id: 8, name: "Jennifer White", email: "jennifer.w@email.com", phone: "+1-555-0108", addedBy: "Admin", lastMessage: "2024-07-15 08:30", avatar: "JW"
-    },
-    {
-        id: 9, name: "Christopher Lee", email: "chris.lee@email.com", phone: "+1-555-0109", addedBy: "Manager", lastMessage: "2024-07-15 08:00", avatar: "CL"
-    },
-    {
-        id: 10, name: "Amanda Garcia", email: "amanda.garcia@email.com", phone: "+1-555-0110", addedBy: "Support", lastMessage: "2024-07-15 07:45", avatar: "AG"
-    },
-    {
-        id: 11, name: "James Martinez", email: "james.martinez@email.com", phone: "+1-555-0111", addedBy: "Admin", lastMessage: "2024-07-14 16:20", avatar: "JM"
-    },
-    {
-        id: 12, name: "Mary Rodriguez", email: "mary.rodriguez@email.com", phone: "+1-555-0112", addedBy: "Manager", lastMessage: "2024-07-14 15:30", avatar: "MR"
-    },
-    {
-        id: 13, name: "Daniel Thompson", email: "daniel.t@email.com", phone: "+1-555-0113", addedBy: "Support", lastMessage: "2024-07-14 14:45", avatar: "DT"
-    },
-    {
-        id: 14, name: "Patricia Moore", email: "patricia.moore@email.com", phone: "+1-555-0114", addedBy: "Admin", lastMessage: "2024-07-14 13:15", avatar: "PM"
-    },
-    {
-        id: 15, name: "Mark Jackson", email: "mark.jackson@email.com", phone: "+1-555-0115", addedBy: "Manager", lastMessage: "2024-07-14 12:30", avatar: "MJ"
-    },
-    {
-        id: 16, name: "Linda Clark", email: "linda.clark@email.com", phone: "+1-555-0116", addedBy: "Support", lastMessage: "2024-07-14 11:20", avatar: "LC"
-    },
-    {
-        id: 17, name: "Paul Lewis", email: "paul.lewis@email.com", phone: "+1-555-0117", addedBy: "Admin", lastMessage: "2024-07-14 10:45", avatar: "PL"
-    },
-    {
-        id: 18, name: "Nancy Walker", email: "nancy.walker@email.com", phone: "+1-555-0118", addedBy: "Manager", lastMessage: "2024-07-14 10:00", avatar: "NW"
-    },
-    {
-        id: 19, name: "Steven Hall", email: "steven.hall@email.com", phone: "+1-555-0119", addedBy: "Support", lastMessage: "2024-07-14 09:30", avatar: "SH"
-    },
-    {
-        id: 20, name: "Karen Allen", email: "karen.allen@email.com", phone: "+1-555-0120", addedBy: "Admin", lastMessage: "2024-07-14 09:00", avatar: "KA"
-    },
-    {
-        id: 21, name: "Kevin Young", email: "kevin.young@email.com", phone: "+1-555-0121", addedBy: "Manager", lastMessage: "2024-07-14 08:15", avatar: "KY"
-    },
-    {
-        id: 22, name: "Betty King", email: "betty.king@email.com", phone: "+1-555-0122", addedBy: "Support", lastMessage: "2024-07-14 07:45", avatar: "BK"
-    },
-    {
-        id: 23, name: "Gary Wright", email: "gary.wright@email.com", phone: "+1-555-0123", addedBy: "Admin", lastMessage: "2024-07-13 16:30", avatar: "GW"
-    },
-    {
-        id: 24, name: "Helen Lopez", email: "helen.lopez@email.com", phone: "+1-555-0124", addedBy: "Manager", lastMessage: "2024-07-13 15:45", avatar: "HL"
-    },
-    {
-        id: 25, name: "Anthony Hill", email: "anthony.hill@email.com", phone: "+1-555-0125", addedBy: "Support", lastMessage: "2024-07-13 14:20", avatar: "AH"
-    },
-    {
-        id: 26, name: "Sandra Green", email: "sandra.green@email.com", phone: "+1-555-0126", addedBy: "Admin", lastMessage: "2024-07-13 13:30", avatar: "SG"
-    },
-    {
-        id: 27, name: "Ronald Adams", email: "ronald.adams@email.com", phone: "+1-555-0127", addedBy: "Manager", lastMessage: "2024-07-13 12:15", avatar: "RA"
-    },
-    {
-        id: 28, name: "Donna Baker", email: "donna.baker@email.com", phone: "+1-555-0128", addedBy: "Support", lastMessage: "2024-07-13 11:45", avatar: "DB"
-    },
-    {
-        id: 29, name: "Ryan Nelson", email: "ryan.nelson@email.com", phone: "+1-555-0129", addedBy: "Admin", lastMessage: "2024-07-13 10:30", avatar: "RN"
-    },
-    {
-        id: 30, name: "Carol Carter", email: "carol.carter@email.com", phone: "+1-555-0130", addedBy: "Manager", lastMessage: "2024-07-13 09:45", avatar: "CC"
-    },
-    {
-        id: 31, name: "Timothy Mitchell", email: "timothy.mitchell@email.com", phone: "+1-555-0131", addedBy: "Support", lastMessage: "2024-07-13 09:00", avatar: "TM"
-    },
-    {
-        id: 32, name: "Sharon Perez", email: "sharon.perez@email.com", phone: "+1-555-0132", addedBy: "Admin", lastMessage: "2024-07-13 08:30", avatar: "SP"
-    },
-    {
-        id: 33, name: "Jason Roberts", email: "jason.roberts@email.com", phone: "+1-555-0133", addedBy: "Manager", lastMessage: "2024-07-12 16:15", avatar: "JR"
-    },
-    {
-        id: 34, name: "Michelle Turner", email: "michelle.turner@email.com", phone: "+1-555-0134", addedBy: "Support", lastMessage: "2024-07-12 15:30", avatar: "MT"
-    },
-    {
-        id: 35, name: "Kenneth Phillips", email: "kenneth.phillips@email.com", phone: "+1-555-0135", addedBy: "Admin", lastMessage: "2024-07-12 14:45", avatar: "KP"
-    },
-    {
-        id: 36, name: "Kimberly Campbell", email: "kimberly.campbell@email.com", phone: "+1-555-0136", addedBy: "Manager", lastMessage: "2024-07-12 13:20", avatar: "KC"
-    },
-    {
-        id: 37, name: "Joshua Parker", email: "joshua.parker@email.com", phone: "+1-555-0137", addedBy: "Support", lastMessage: "2024-07-12 12:30", avatar: "JP"
-    },
-    {
-        id: 38, name: "Deborah Evans", email: "deborah.evans@email.com", phone: "+1-555-0138", addedBy: "Admin", lastMessage: "2024-07-12 11:45", avatar: "DE"
-    },
-    {
-        id: 39, name: "Brian Edwards", email: "brian.edwards@email.com", phone: "+1-555-0139", addedBy: "Manager", lastMessage: "2024-07-12 10:15", avatar: "BE"
-    },
-    {
-        id: 40, name: "Amy Collins", email: "amy.collins@email.com", phone: "+1-555-0140", addedBy: "Support", lastMessage: "2024-07-12 09:30", avatar: "AC"
-    },
-    {
-        id: 41, name: "Edward Stewart", email: "edward.stewart@email.com", phone: "+1-555-0141", addedBy: "Admin", lastMessage: "2024-07-12 08:45", avatar: "ES"
-    },
-    {
-        id: 42, name: "Brenda Sanchez", email: "brenda.sanchez@email.com", phone: "+1-555-0142", addedBy: "Manager", lastMessage: "2024-07-11 16:20", avatar: "BS"
-    },
-    {
-        id: 43, name: "Wayne Morris", email: "wayne.morris@email.com", phone: "+1-555-0143", addedBy: "Support", lastMessage: "2024-07-11 15:15", avatar: "WM"
-    },
-    {
-        id: 44, name: "Angela Rogers", email: "angela.rogers@email.com", phone: "+1-555-0144", addedBy: "Admin", lastMessage: "2024-07-11 14:30", avatar: "AR"
-    },
-    {
-        id: 45, name: "Ralph Reed", email: "ralph.reed@email.com", phone: "+1-555-0145", addedBy: "Manager", lastMessage: "2024-07-11 13:45", avatar: "RR"
-    },
-    {
-        id: 46, name: "Janet Cook", email: "janet.cook@email.com", phone: "+1-555-0146", addedBy: "Support", lastMessage: "2024-07-11 12:20", avatar: "JC"
-    },
-    {
-        id: 47, name: "Arthur Morgan", email: "arthur.morgan@email.com", phone: "+1-555-0147", addedBy: "Admin", lastMessage: "2024-07-11 11:30", avatar: "AM"
-    },
-    {
-        id: 48, name: "Frances Bell", email: "frances.bell@email.com", phone: "+1-555-0148", addedBy: "Manager", lastMessage: "2024-07-11 10:45", avatar: "FB"
-    },
-    {
-        id: 49, name: "Harold Murphy", email: "harold.murphy@email.com", phone: "+1-555-0149", addedBy: "Support", lastMessage: "2024-07-11 10:00", avatar: "HM"
-    },
-    {
-        id: 50, name: "Marie Bailey", email: "marie.bailey@email.com", phone: "+1-555-0150", addedBy: "Admin", lastMessage: "2024-07-11 09:15", avatar: "MB"
-    },
+    { id: 1, name: "John Smith", email: "john.smith@email.com", phone: "+1-555-0101", addedBy: "Kartikey Mishra", lastMessage: "July 15, 2024, 2:30 PM", avatar: "/media/avatar.png" },
+    { id: 2, name: "Sarah Johnson", email: "sarah.j@email.com", phone: "+1-555-0102", addedBy: "Kartikey Mishra", lastMessage: "July 15, 2024, 1:45 PM", avatar: "/media/avatar.png" },
+    { id: 3, name: "Mike Wilson", email: "mike.wilson@email.com", phone: "+1-555-0103", addedBy: "Kartikey Mishra", lastMessage: "July 15, 2024, 12:20 PM", avatar: "/media/avatar.png" },
+    { id: 4, name: "Emily Davis", email: "emily.davis@email.com", phone: "+1-555-0104", addedBy: "Kartikey Mishra", lastMessage: "July 15, 2024, 11:15 AM", avatar: "/media/avatar.png" },
+    { id: 5, name: "David Brown", email: "david.brown@email.com", phone: "+1-555-0105", addedBy: "Kartikey Mishra", lastMessage: "July 15, 2024, 10:30 AM", avatar: "/media/avatar.png" },
+    { id: 6, name: "Sophia Miller", email: "sophia.m@email.com", phone: "+1-555-0106", addedBy: "Kartikey Mishra", lastMessage: "July 15, 2024, 9:50 AM", avatar: "/media/avatar.png" },
+    { id: 7, name: "James Anderson", email: "james.a@email.com", phone: "+1-555-0107", addedBy: "Kartikey Mishra", lastMessage: "July 15, 2024, 9:00 AM", avatar: "/media/avatar.png" },
+    { id: 8, name: "Olivia Taylor", email: "olivia.t@email.com", phone: "+1-555-0108", addedBy: "Kartikey Mishra", lastMessage: "July 14, 2024, 6:30 PM", avatar: "/media/avatar.png" },
+    { id: 9, name: "William Moore", email: "william.m@email.com", phone: "+1-555-0109", addedBy: "Kartikey Mishra", lastMessage: "July 14, 2024, 5:45 PM", avatar: "/media/avatar.png" },
+    { id: 10, name: "Isabella Thomas", email: "isabella.t@email.com", phone: "+1-555-0110", addedBy: "Kartikey Mishra", lastMessage: "July 14, 2024, 5:00 PM", avatar: "/media/avatar.png" },
+    { id: 11, name: "Ethan Jackson", email: "ethan.j@email.com", phone: "+1-555-0111", addedBy: "Kartikey Mishra", lastMessage: "July 14, 2024, 4:15 PM", avatar: "/media/avatar.png" },
+    { id: 12, name: "Ava White", email: "ava.w@email.com", phone: "+1-555-0112", addedBy: "Kartikey Mishra", lastMessage: "July 14, 2024, 3:30 PM", avatar: "/media/avatar.png" },
+    { id: 13, name: "Alexander Harris", email: "alex.h@email.com", phone: "+1-555-0113", addedBy: "Kartikey Mishra", lastMessage: "July 14, 2024, 2:45 PM", avatar: "/media/avatar.png" },
+    { id: 14, name: "Mia Martin", email: "mia.m@email.com", phone: "+1-555-0114", addedBy: "Kartikey Mishra", lastMessage: "July 14, 2024, 2:00 PM", avatar: "/media/avatar.png" },
+    { id: 15, name: "Benjamin Lee", email: "ben.lee@email.com", phone: "+1-555-0115", addedBy: "Kartikey Mishra", lastMessage: "July 14, 2024, 1:15 PM", avatar: "/media/avatar.png" },
+    { id: 16, name: "Charlotte Perez", email: "charlotte.p@email.com", phone: "+1-555-0116", addedBy: "Kartikey Mishra", lastMessage: "July 14, 2024, 12:30 PM", avatar: "/media/avatar.png" },
+    { id: 17, name: "Daniel King", email: "daniel.k@email.com", phone: "+1-555-0117", addedBy: "Kartikey Mishra", lastMessage: "July 14, 2024, 11:45 AM", avatar: "/media/avatar.png" },
+    { id: 18, name: "Amelia Wright", email: "amelia.w@email.com", phone: "+1-555-0118", addedBy: "Kartikey Mishra", lastMessage: "July 14, 2024, 11:00 AM", avatar: "/media/avatar.png" },
+    { id: 19, name: "Matthew Scott", email: "matthew.s@email.com", phone: "+1-555-0119", addedBy: "Kartikey Mishra", lastMessage: "July 14, 2024, 10:15 AM", avatar: "/media/avatar.png" },
+    { id: 20, name: "Harper Green", email: "harper.g@email.com", phone: "+1-555-0120", addedBy: "Kartikey Mishra", lastMessage: "July 14, 2024, 9:30 AM", avatar: "/media/avatar.png" },
+    { id: 21, name: "Lucas Hall", email: "lucas.h@email.com", phone: "+1-555-0121", addedBy: "Kartikey Mishra", lastMessage: "July 13, 2024, 6:30 PM", avatar: "/media/avatar.png" },
+    { id: 22, name: "Evelyn Allen", email: "evelyn.a@email.com", phone: "+1-555-0122", addedBy: "Kartikey Mishra", lastMessage: "July 13, 2024, 5:45 PM", avatar: "/media/avatar.png" },
+    { id: 23, name: "Jack Young", email: "jack.y@email.com", phone: "+1-555-0123", addedBy: "Kartikey Mishra", lastMessage: "July 13, 2024, 5:00 PM", avatar: "/media/avatar.png" },
+    { id: 24, name: "Abigail Hernandez", email: "abigail.h@email.com", phone: "+1-555-0124", addedBy: "Kartikey Mishra", lastMessage: "July 13, 2024, 4:15 PM", avatar: "/media/avatar.png" },
+    { id: 25, name: "Henry Lopez", email: "henry.l@email.com", phone: "+1-555-0125", addedBy: "Kartikey Mishra", lastMessage: "July 13, 2024, 3:30 PM", avatar: "/media/avatar.png" },
+    { id: 26, name: "Grace Hill", email: "grace.h@email.com", phone: "+1-555-0126", addedBy: "Kartikey Mishra", lastMessage: "July 13, 2024, 2:45 PM", avatar: "/media/avatar.png" },
+    { id: 27, name: "Sebastian Adams", email: "sebastian.a@email.com", phone: "+1-555-0127", addedBy: "Kartikey Mishra", lastMessage: "July 13, 2024, 2:00 PM", avatar: "/media/avatar.png" },
+    { id: 28, name: "Chloe Baker", email: "chloe.b@email.com", phone: "+1-555-0128", addedBy: "Kartikey Mishra", lastMessage: "July 13, 2024, 1:15 PM", avatar: "/media/avatar.png" },
+    { id: 29, name: "David Gonzalez", email: "david.g@email.com", phone: "+1-555-0129", addedBy: "Kartikey Mishra", lastMessage: "July 13, 2024, 12:30 PM", avatar: "/media/avatar.png" },
+    { id: 30, name: "Lily Nelson", email: "lily.n@email.com", phone: "+1-555-0130", addedBy: "Kartikey Mishra", lastMessage: "July 13, 2024, 11:45 AM", avatar: "/media/avatar.png" },
+    { id: 31, name: "Andrew Carter", email: "andrew.c@email.com", phone: "+1-555-0131", addedBy: "Kartikey Mishra", lastMessage: "July 13, 2024, 11:00 AM", avatar: "/media/avatar.png" },
+    { id: 32, name: "Zoe Mitchell", email: "zoe.m@email.com", phone: "+1-555-0132", addedBy: "Kartikey Mishra", lastMessage: "July 13, 2024, 10:15 AM", avatar: "/media/avatar.png" },
+    { id: 33, name: "Christopher Roberts", email: "chris.r@email.com", phone: "+1-555-0133", addedBy: "Kartikey Mishra", lastMessage: "July 13, 2024, 9:30 AM", avatar: "/media/avatar.png" },
+    { id: 34, name: "Ella Turner", email: "ella.t@email.com", phone: "+1-555-0134", addedBy: "Kartikey Mishra", lastMessage: "July 12, 2024, 6:30 PM", avatar: "/media/avatar.png" },
+    { id: 35, name: "Joshua Phillips", email: "josh.p@email.com", phone: "+1-555-0135", addedBy: "Kartikey Mishra", lastMessage: "July 12, 2024, 5:45 PM", avatar: "/media/avatar.png" },
+    { id: 36, name: "Scarlett Campbell", email: "scarlett.c@email.com", phone: "+1-555-0136", addedBy: "Kartikey Mishra", lastMessage: "July 12, 2024, 5:00 PM", avatar: "/media/avatar.png" },
+    { id: 37, name: "Anthony Parker", email: "anthony.p@email.com", phone: "+1-555-0137", addedBy: "Kartikey Mishra", lastMessage: "July 12, 2024, 4:15 PM", avatar: "/media/avatar.png" },
+    { id: 38, name: "Victoria Evans", email: "victoria.e@email.com", phone: "+1-555-0138", addedBy: "Kartikey Mishra", lastMessage: "July 12, 2024, 3:30 PM", avatar: "/media/avatar.png" },
+    { id: 39, name: "Joseph Edwards", email: "joseph.e@email.com", phone: "+1-555-0139", addedBy: "Kartikey Mishra", lastMessage: "July 12, 2024, 2:45 PM", avatar: "/media/avatar.png" },
+    { id: 40, name: "Aria Collins", email: "aria.c@email.com", phone: "+1-555-0140", addedBy: "Kartikey Mishra", lastMessage: "July 12, 2024, 2:00 PM", avatar: "/media/avatar.png" },
+    { id: 41, name: "Samuel Stewart", email: "samuel.s@email.com", phone: "+1-555-0141", addedBy: "Kartikey Mishra", lastMessage: "July 12, 2024, 1:15 PM", avatar: "/media/avatar.png" },
+    { id: 42, name: "Hannah Morris", email: "hannah.m@email.com", phone: "+1-555-0142", addedBy: "Kartikey Mishra", lastMessage: "July 12, 2024, 12:30 PM", avatar: "/media/avatar.png" },
+    { id: 43, name: "Nicholas Rogers", email: "nick.r@email.com", phone: "+1-555-0143", addedBy: "Kartikey Mishra", lastMessage: "July 12, 2024, 11:45 AM", avatar: "/media/avatar.png" },
+    { id: 44, name: "Ella Peterson", email: "ella.p@email.com", phone: "+1-555-0144", addedBy: "Kartikey Mishra", lastMessage: "July 12, 2024, 11:00 AM", avatar: "/media/avatar.png" },
+    { id: 45, name: "Dylan Reed", email: "dylan.r@email.com", phone: "+1-555-0145", addedBy: "Kartikey Mishra", lastMessage: "July 12, 2024, 10:15 AM", avatar: "/media/avatar.png" },
+    { id: 46, name: "Penelope Cook", email: "penelope.c@email.com", phone: "+1-555-0146", addedBy: "Kartikey Mishra", lastMessage: "July 11, 2024, 6:30 PM", avatar: "/media/avatar.png" },
+    { id: 47, name: "Nathan Murphy", email: "nathan.m@email.com", phone: "+1-555-0147", addedBy: "Kartikey Mishra", lastMessage: "July 11, 2024, 5:45 PM", avatar: "/media/avatar.png" },
+    { id: 48, name: "Layla Bell", email: "layla.b@email.com", phone: "+1-555-0148", addedBy: "Kartikey Mishra", lastMessage: "July 11, 2024, 5:00 PM", avatar: "/media/avatar.png" },
+    { id: 49, name: "Owen Cooper", email: "owen.c@email.com", phone: "+1-555-0149", addedBy: "Kartikey Mishra", lastMessage: "July 11, 2024, 4:15 PM", avatar: "/media/avatar.png" },
+    { id: 50, name: "Marie Bailey", email: "marie.bailey@email.com", phone: "+1-555-0150", addedBy: "Kartikey Mishra", lastMessage: "July 11, 2024, 9:15 AM", avatar: "/media/avatar.png" }
 ];
 
 export default customerData;
