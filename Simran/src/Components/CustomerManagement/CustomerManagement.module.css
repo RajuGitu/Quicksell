@@ -59,9 +59,9 @@
 
 .tableHeader {
     display: grid;
-    grid-template-columns: 48px 1fr 1fr 1fr 1fr;
-    gap: 16px;
-    padding: 16px 20px;
+    grid-template-columns: 50px 2.5fr 100px 2fr 2fr 1.5fr;
+    gap: 24px;
+    padding: 16px 24px;
     background-color: #f8fafc;
     border-bottom: 1px solid #e5e7eb;
     font-weight: 600;
@@ -69,12 +69,33 @@
     text-transform: uppercase;
     font-size: 12px;
     letter-spacing: 0.05em;
+    align-items: center;
 }
 
+.customerCell {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    /* spacing between image and text */
+}
+
+.customerCell img {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+    
 .headerCheckbox {
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.headerCheckbox input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
 }
 
 .headerCell {
@@ -83,6 +104,7 @@
     cursor: pointer;
     user-select: none;
     transition: color 0.2s ease;
+    padding: 0 4px;
 }
 
 .headerCell:hover {
@@ -91,18 +113,24 @@
 
 .customerHeader {
     min-width: 200px;
+    padding-left: 8px;
+}
+
+.scoreHeader {
+    justify-content: center;
+    text-align: center;
 }
 
 .emailHeader {
-    min-width: 200px;
+    min-width: 220px;
 }
 
 .messageHeader {
-    min-width: 150px;
+    min-width: 180px;
 }
 
 .addedByHeader {
-    min-width: 120px;
+    min-width: 140px;
 }
 
 .sortIcon {
@@ -116,6 +144,74 @@
     text-align: center;
     color: #6b7280;
     font-size: 16px;
+}
+
+/* Loading and Load More Styles */
+.loadingIndicator {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 20px;
+    color: #6b7280;
+    font-size: 14px;
+}
+
+.spinner {
+    width: 16px;
+    height: 16px;
+    border: 2px solid #e5e7eb;
+    border-top: 2px solid #3b82f6;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.loadMoreContainer {
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    border-top: 1px solid #f3f4f6;
+}
+
+.loadMoreButton {
+    padding: 8px 16px;
+    background-color: #3b82f6;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    transition: background-color 0.2s ease;
+}
+
+.loadMoreButton:hover {
+    background-color: #2563eb;
+}
+
+.endOfResults {
+    text-align: center;
+    padding: 20px;
+    color: #6b7280;
+    font-size: 14px;
+    border-top: 1px solid #f3f4f6;
+}
+
+.statusInfo {
+    text-align: center;
+    color: #6b7280;
+    font-size: 14px;
+    margin-top: 16px;
 }
 
 /* Pagination Styles */
@@ -180,6 +276,26 @@
 }
 
 /* Responsive Design */
+@media (max-width: 1200px) {
+    .tableHeader {
+        grid-template-columns: 50px 2fr 90px 1.8fr 1.8fr 1.3fr;
+        gap: 20px;
+        padding: 16px 20px;
+    }
+}
+
+@media (max-width: 1024px) {
+    .tableHeader {
+        grid-template-columns: 50px 2.2fr 90px 1.8fr 1.5fr;
+        gap: 16px;
+        padding: 16px 18px;
+    }
+
+    .addedByHeader {
+        display: none;
+    }
+}
+
 @media (max-width: 768px) {
     .container {
         padding: 16px;
@@ -192,8 +308,9 @@
     }
 
     .tableHeader {
-        grid-template-columns: 48px 1fr;
-        gap: 8px;
+        grid-template-columns: 50px 1fr 80px;
+        gap: 12px;
+        padding: 14px 16px;
     }
 
     .emailHeader,
@@ -221,5 +338,11 @@
 
     .tableHeader {
         padding: 12px 16px;
+        grid-template-columns: 50px 1fr;
+        gap: 12px;
+    }
+
+    .scoreHeader {
+        display: none;
     }
 }

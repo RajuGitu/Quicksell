@@ -17,8 +17,11 @@ const CustomerRow = ({ customer, isSelected, onSelect }) => {
                 </div>
                 <div className={styles.customerInfo}>
                     <div className={styles.name}>{customer.name}</div>
-                    <div className={styles.id}>#{customer.id.toString().padStart(10, '0')}</div>
+                    <div className={styles.id}>{customer.phone}</div>
                 </div>
+            </div>
+            <div className={styles.scoreCell}>
+                <div className={styles.scoreValue}>{customer.score}</div>
             </div>
             <div className={styles.emailCell}>
                 {customer.email}

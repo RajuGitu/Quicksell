@@ -180,6 +180,9 @@ const CustomerManagement = () => {
                     <div className={`${styles.headerCell} ${styles.customerHeader}`} onClick={() => handleSort('name')}>
                         Customer <span className={styles.sortIcon}>{getSortIcon('name')}</span>
                     </div>
+                    <div className={`${styles.headerCell} ${styles.customerHeader}`} onClick={() => handleSort('score')}>
+                        Score <span className={styles.sortIcon}>{getSortIcon('score')}</span>
+                    </div>
                     <div className={`${styles.headerCell} ${styles.emailHeader}`} onClick={() => handleSort('email')}>
                         Email <span className={styles.sortIcon}>{getSortIcon('email')}</span>
                     </div>
