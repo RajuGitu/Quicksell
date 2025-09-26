@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo, useCallback } from 'react';
+import React, { useState, useEffect, useMemo, useCallback, useRef } from 'react';
 import customerData from '../../Data/Customer';
 import CustomerRow from '../CustomerRow/CustomerRow';
 import Header from '../Header';
@@ -11,8 +11,12 @@ const CustomerManagement = () => {
     const [searchTerm, setSearchTerm] = useState('');
     const [sortConfig, setSortConfig] = useState({ key: null, direction: 'asc' });
     const [selectedCustomers, setSelectedCustomers] = useState(new Set());
-    const [currentPage, setCurrentPage] = useState(1);
     const [showFilters, setShowFilters] = useState(false);
+
+    // Infinite scroll state
+    const [displayedCount, setDisplayedCount] = useState(30);
+    const [isLoading, setIsLoading] = useState(false);
+    const tableContainerRef = useRef(null);
     const itemsPerPage = 30;
 
     // Debounced search effect
@@ -51,11 +55,52 @@ const CustomerManagement = () => {
         return filtered;
     }, [customers, debouncedSearch, sortConfig]);
 
-    // Calculate pagination
-    const totalPages = Math.ceil(filteredAndSortedCustomers.length / itemsPerPage);
-    const startIndex = (currentPage - 1) * itemsPerPage;
-    const endIndex = startIndex + itemsPerPage;
-    const displayedCustomers = filteredAndSortedCustomers.slice(startIndex, endIndex);
+    // Get currently displayed customers
+    const displayedCustomers = useMemo(() => {
+        return filteredAndSortedCustomers.slice(0, displayedCount);
+    }, [filteredAndSortedCustomers, displayedCount]);
+
+    // Check if there are more items to load
+    const hasMore = displayedCount < filteredAndSortedCustomers.length;
+
+    // Load more items function
+    const loadMore = useCallback(() => {
+        if (isLoading || !hasMore) return;
+
+        setIsLoading(true);
+        // Simulate loading delay for better UX
+        setTimeout(() => {
+            setDisplayedCount(prev => Math.min(prev + itemsPerPage, filteredAndSortedCustomers.length));
+            setIsLoading(false);
+        }, 300);
+    }, [isLoading, hasMore, filteredAndSortedCustomers.length]);
+
+    // Infinite scroll handler
+    const handleScroll = useCallback(() => {
+        const container = tableContainerRef.current;
+        if (!container || isLoading || !hasMore) return;
+
+        const { scrollTop, scrollHeight, clientHeight } = container;
+        // Load more when user scrolls within 100px of the bottom
+        if (scrollTop + clientHeight >= scrollHeight - 100) {
+            loadMore();
+        }
+    }, [loadMore, isLoading, hasMore]);
+
+    // Set up scroll event listener
+    useEffect(() => {
+        const container = tableContainerRef.current;
+        if (!container) return;
+
+        container.addEventListener('scroll', handleScroll, { passive: true });
+        return () => container.removeEventListener('scroll', handleScroll);
+    }, [handleScroll]);
+
+    // Reset displayed count when search or sort changes
+    useEffect(() => {
+        setDisplayedCount(itemsPerPage);
+        setIsLoading(false);
+    }, [debouncedSearch, sortConfig]);
 
     // Event handlers
     const handleSort = useCallback((key) => {
@@ -86,9 +131,7 @@ const CustomerManagement = () => {
     }, [displayedCustomers]);
 
     const handleMenuClick = useCallback(() => {
-        // Handle menu button click - you can implement your menu logic here
         console.log('Menu clicked');
-        // For example: open a sidebar, show dropdown menu, etc.
     }, []);
 
     // Handlers for CustomerControls component
@@ -100,11 +143,6 @@ const CustomerManagement = () => {
         setShowFilters(!showFilters);
     }, [showFilters]);
 
-    // Reset to first page when search or sort changes
-    useEffect(() => {
-        setCurrentPage(1);
-    }, [debouncedSearch, sortConfig]);
-
     const getSortIcon = (column) => {
         if (sortConfig.key !== column) return '↕';
         return sortConfig.direction === 'asc' ? '↑' : '↓';
@@ -115,7 +153,7 @@ const CustomerManagement = () => {
             {/* Header Component */}
             <Header onMenuClick={handleMenuClick} />
 
-            {/* Customer Controls Component - includes All Customers Section and Search/Filter Controls */}
+            {/* Customer Controls Component */}
             <CustomerControls
                 filteredCustomersCount={filteredAndSortedCustomers.length}
                 searchTerm={searchTerm}
@@ -123,9 +161,13 @@ const CustomerManagement = () => {
                 showFilters={showFilters}
                 onFiltersToggle={handleFiltersToggle}
             />
-                    
+
             {/* Customer Table */}
-            <div className={styles.tableContainer}>
+            <div
+                className={styles.tableContainer}
+                ref={tableContainerRef}
+                style={{ maxHeight: '70vh', overflowY: 'auto' }}
+            >
                 {/* Table Header */}
                 <div className={styles.tableHeader}>
                     <div className={styles.headerCheckbox}>
@@ -159,6 +201,34 @@ const CustomerManagement = () => {
                     />
                 ))}
 
+                {/* Loading indicator */}
+                {isLoading && (
+                    <div className={styles.loadingIndicator}>
+                        <div className={styles.spinner}></div>
+                        Loading more customers...
+                    </div>
+                )}
+
+                {/* Load more button (fallback for users who prefer clicking) */}
+                {!isLoading && hasMore && displayedCustomers.length > 0 && (
+                    <div className={styles.loadMoreContainer}>
+                        <button
+                            className={styles.loadMoreButton}
+                            onClick={loadMore}
+                            type="button"
+                        >
+                            Load More ({filteredAndSortedCustomers.length - displayedCount} remaining)
+                        </button>
+                    </div>
+                )}
+
+                {/* End of results indicator */}
+                {!hasMore && displayedCustomers.length > 0 && (
+                    <div className={styles.endOfResults}>
+                        All customers loaded ({filteredAndSortedCustomers.length} total)
+                    </div>
+                )}
+
                 {/* No results message */}
                 {displayedCustomers.length === 0 && debouncedSearch && (
                     <div className={styles.noResults}>
@@ -167,53 +237,10 @@ const CustomerManagement = () => {
                 )}
             </div>
 
-            {/* Pagination */}
-            {totalPages > 1 && (
-                <div className={styles.pagination}>
-                    <button
-                        className={`${styles.pageButton} ${currentPage === 1 ? styles.pageButtonDisabled : ''}`}
-                        onClick={() => setCurrentPage(currentPage - 1)}
-                        disabled={currentPage === 1}
-                    >
-                        Previous
-                    </button>
-
-                    <div className={styles.pageNumbers}>
-                        {Array.from({ length: totalPages }, (_, i) => i + 1)
-                            .filter(pageNum => {
-                                // Show first page, last page, current page, and pages around current
-                                return pageNum === 1 ||
-                                    pageNum === totalPages ||
-                                    Math.abs(pageNum - currentPage) <= 2;
-                            })
-                            .map((pageNum, index, array) => (
-                                <React.Fragment key={pageNum}>
-                                    {index > 0 && array[index - 1] < pageNum - 1 && (
-                                        <span className={styles.pageEllipsis}>...</span>
-                                    )}
-                                    <button
-                                        className={`${styles.pageButton} ${currentPage === pageNum ? styles.pageButtonActive : ''}`}
-                                        onClick={() => setCurrentPage(pageNum)}
-                                    >
-                                        {pageNum}
-                                    </button>
-                                </React.Fragment>
-                            ))}
-                    </div>
-
-                    <button
-                        className={`${styles.pageButton} ${currentPage === totalPages ? styles.pageButtonDisabled : ''}`}
-                        onClick={() => setCurrentPage(currentPage + 1)}
-                        disabled={currentPage === totalPages}
-                    >
-                        Next
-                    </button>
-                </div>
-            )}
-
-            {/* Page Info */}
-            <div className={styles.pageInfo}>
-                Showing {startIndex + 1}-{Math.min(endIndex, filteredAndSortedCustomers.length)} of {filteredAndSortedCustomers.length} customers
+            {/* Status Info */}
+            <div className={styles.statusInfo}>
+                Showing {displayedCustomers.length} of {filteredAndSortedCustomers.length} customers
+                {hasMore && ` (${filteredAndSortedCustomers.length - displayedCount} more available)`}
             </div>
         </div>
     );
